@@ -11,6 +11,8 @@ router.post("/api/transaction", ({body}, res) => {
     });
 });
 
+// Did not save list items of offline transaction posts but ran Math?
+
 router.post("/api/transaction/bulk", ({body}, res) => {
   Transaction.insertMany(body)
     .then(dbTransaction => {
@@ -30,5 +32,7 @@ router.get("/api/transaction", (req, res) => {
       res.status(404).json(err);
     });
 });
+
+// No other routes needed? Does the bulk add into an existing day /month?
 
 module.exports = router;
