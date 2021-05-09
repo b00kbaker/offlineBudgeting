@@ -7,10 +7,6 @@ request.onupgradeneeded = function (event) {
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-// request.onerror = function (e) {
-//   console.log("There was an error");
-// };
-
 request.onsuccess = function (event) {
   db = event.target.result;
   if (navigator.onLine) {
@@ -28,10 +24,10 @@ function searchDatabase(){
     const getAll = store.getAll();
 
     getAll.onsuccess = function(){
-        if (all.result.length > 0){
+        if (getAll.result.length > 0){
             fetch("/api/transaction/bulk", {
                 method: "POST",
-                body: JSON.stringify(all.result),
+                body: JSON.stringify(getAll.result),
                 headers: {
                     Accept: "application/json, text/plain, */*",
                     "Content-Type": "application/json"
