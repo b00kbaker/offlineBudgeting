@@ -45,7 +45,7 @@ self.addEventListener('activate', (event) => {
         
   
   self.addEventListener('fetch', (event) => {
-    if (event.request.url.includes('/api/')) {
+    if (event.request.url.includes('/')) {
       event.respondWith(
         caches.open(DATA_CACHE_NAME). then(cache =>{
           return fetch(event.request)
